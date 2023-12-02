@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { SnackbarProvider } from "notistack";
 import { Provider } from "react-redux";
-import store from "../utils/store.js";
+import store from "./utils/store.js";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Login.jsx";

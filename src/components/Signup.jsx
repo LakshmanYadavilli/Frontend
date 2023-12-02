@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setMessage } from "../../utils/userSlice";
+import { setMessage } from "../utils/userSlice";
+import functions from "../utils/functionalities";
 
 const Signup = () => {
   const [credentials, setCredentials] = useState({
@@ -10,6 +11,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
+  const { set, clear } = functions;
 
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
@@ -31,6 +33,7 @@ const Signup = () => {
         // localStorage.setItem("token", data.token);
         localStorage.setItem("username", credentials.username);
         enqueueSnackbar("Successfully Signup..", { variant: "success" });
+        set();
         navigate("/home");
       } else {
         enqueueSnackbar(data.message, { variant: "error" });

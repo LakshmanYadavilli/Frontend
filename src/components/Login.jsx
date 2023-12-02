@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import functions from "../utils/functionalities";
+
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
@@ -7,6 +9,7 @@ const Login = () => {
     username: "",
     password: "",
   });
+  const { set, clear } = functions;
   const { enqueueSnackbar } = useSnackbar();
 
   const navigate = useNavigate();
@@ -30,6 +33,7 @@ const Login = () => {
         enqueueSnackbar("Successfully Login..", { variant: "success" });
         localStorage.setItem("username", credentials.username);
         // localStorage.setItem("token", data.token);
+        set();
         navigate("/home");
       } else {
         console.log("else", data);
